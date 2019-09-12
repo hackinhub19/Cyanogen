@@ -1,0 +1,48 @@
+<html>
+<head>
+<title> REGISTER FORM </title>
+</head>
+<style>
+table{
+color:black;
+border-color:blue;
+padding:30px;
+}
+td{
+font-size:20px;
+border-color:green;
+}
+marquee{
+font-size:50px;
+}
+
+</style>
+<body background="2.png">
+<marquee scrollamount="15" bgcolor="green">
+ Please signin into our network
+</marquee>
+<font color="orange" face="algerian" size="60px">
+ <center>CYNOGEN TEAM </center>
+</font>
+<font color="red" face="algerian" size="5px">
+<center><h1> LOGIN PAGE </h1></center>
+</font>
+<form>
+	<center><table border="10px" bgcolor="pink" cellspacing="8px"></center>
+		<tr>
+			<td>
+				+91
+			</td>
+			<td>
+				<input type="Number" placeholder="Enter your Mobile Number">
+			</td>
+		</tr>
+		
+				<tr align="center">
+			<td colspan="2">
+				<input type="submit" value="Get OTP" name="">
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
