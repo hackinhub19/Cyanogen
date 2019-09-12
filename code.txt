@@ -1,0 +1,84 @@
+!DOCTYPE html
+html
+head
+	titleSend SMS from PHP using textlocaltitle
+	link rel=stylesheet href=..cssbootstrap.min.css
+head
+body
+div class=container
+h1 class=text-centerSending OTP SMS in PHP from localhost using textlocalh1
+hr
+	div class=row
+	div class=col-md-9 col-md-offset-2
+		php
+			if(isset($_POST['sendopt'])) {
+				require('textlocal.class.php');
+				require('credential.php');
+
+				$textlocal = new Textlocal(false, false, API_KEY);
+
+                 You can access MOBILE from credential.php
+				 $numbers = array(MOBILE);
+                 Access enter mobile number in input box
+                $numbers = array(MOBILE);
+
+				$sender = 'TXTLCL';
+				$otp = mt_rand(10000, 99999);
+				$message = Hello  . $_POST['uname'] .  This is your OTP  . $otp;
+
+				try {
+				    $result = $textlocal-sendSms($numbers, $message, $sender);
+				    setcookie('otp', $otp);
+				    echo OTP successfully send..;
+				} catch (Exception $e) {
+				    die('Error ' . $e-getMessage());
+				}
+			}
+
+			if(isset($_POST['verifyotp'])) { 
+				$otp = $_POST['otp'];
+				if($_COOKIE['otp'] == $otp) {
+					echo Congratulation, Your mobile is verified.;
+				} else {
+					echo Please enter correct otp.;
+				}
+			}
+		
+	div
+    div class=col-md-9 col-md-offset-2
+        form role=form method=post enctype=multipartform-data
+            div class=row
+                div class=col-sm-9 form-group
+                    label for=unameNamelabel
+                    input type=text class=form-control id=uname name=uname value= maxlength=10 placeholder=Enter your name required=
+                div
+            div
+            div class=row
+                div class=col-sm-9 form-group
+                    label for=mobileMobilelabel
+                    input type=text class=form-control id=mobile name=mobile value= maxlength=10 placeholder=Enter valid mobile number required=
+                div
+            div
+            div class=row
+                div class=col-sm-9 form-group
+                    button type=submit name=sendopt class=btn btn-lg btn-success btn-blockSend OTPbutton
+                div
+            div
+            form
+            form method=POST action=
+            div class=row
+                div class=col-sm-9 form-group
+                    label for=otpOTPlabel
+                    input type=text class=form-control id=otp name=otp placeholder=Enter OTP maxlength=5 required=
+                div
+            div
+             div class=row
+                div class=col-sm-9 form-group
+                    button type=submit name=verifyotp class=btn btn-lg btn-info btn-blockVerifybutton
+                div
+            div
+        form
+	div
+div
+body
+html
